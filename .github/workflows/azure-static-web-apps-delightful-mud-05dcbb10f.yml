@@ -34,8 +34,8 @@ jobs:
           output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
-          REACT_APP_VISION_ENDPOINT: ${{ secrets.SECRET_ONE}}
-          REACT_APP_VISION_KEY: ${{ vars.VARIABLE_ONE}}
+          REACT_APP_VISION_ENDPOINT: ${{ vars.REACT_APP_VISION_ENDPOINT }}
+          REACT_APP_VISION_KEY: ${{ secrets.REACT_APP_VISION_KEY }}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
