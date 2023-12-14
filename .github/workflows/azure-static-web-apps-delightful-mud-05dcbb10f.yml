@@ -33,7 +33,7 @@ jobs:
           output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
-          REACT_APP_VISION_ENDPOINT: ${{vars.REACT_APP_VISION_ENDPOINT}}
+          REACT_APP_VISION_ENDPOINT: https://image-analysis-generation-instance.cognitiveservices.azure.com/computervision/imageanalysis:analyze?features=caption,read&model-version=latest&language=en&api-version=2023-10-01
           REACT_APP_VISION_KEY: ${{vars.REACT_APP_VISION_KEY}}
 
   close_pull_request_job:
