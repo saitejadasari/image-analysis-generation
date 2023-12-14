@@ -14,6 +14,7 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
+    environment: development
     steps:
       - uses: actions/checkout@v3
         with:
@@ -33,8 +34,8 @@ jobs:
           output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
-          REACT_APP_VISION_ENDPOINT: https://image-analysis-generation-instance.cognitiveservices.azure.com/computervision/imageanalysis:analyze?features=caption,read&model-version=latest&language=en&api-version=2023-10-01
-          REACT_APP_VISION_KEY: 1b2e6bbb6d6246e88049588f4e11f060
+          REACT_APP_VISION_ENDPOINT: ${{ vars.SECRET_ONE}}
+          REACT_APP_VISION_KEY: ${{ vars.VARIABLE_ONE}}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
