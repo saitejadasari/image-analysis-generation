@@ -34,7 +34,7 @@ jobs:
           ###### End of Repository/Build Configurations ######
         env:
           REACT_APP_VISION_ENDPOINT: https://image-analysis-generation-instance.cognitiveservices.azure.com/computervision/imageanalysis:analyze?features=caption,read&model-version=latest&language=en&api-version=2023-10-01
-          REACT_APP_VISION_KEY: ${{vars.REACT_APP_VISION_KEY}}
+          REACT_APP_VISION_KEY: 1b2e6bbb6d6246e88049588f4e11f060
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
