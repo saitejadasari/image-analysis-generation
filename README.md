@@ -1,5 +1,7 @@
-# React basic
+# Image Analysis and Generation
 
-[Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) allows you to easily build [React](https://reactjs.org/) apps in minutes. Use this repo with the [React quickstart](https://docs.microsoft.com/azure/static-web-apps/getting-started?tabs=react) to build and customize a new static site.
+This App has two functionalities
+- Analyze an image and describes the image using Microsoft's vision API
+- Generate an image based on prompt using OpenAI's Dall-E2 model
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Check out the live demo at https://delightful-mud-05dcbb10f.4.azurestaticapps.net/
