@@ -42,7 +42,7 @@ function App() {
           <h3>Computer Vision Analysis</h3>
           <div style={{flexDirection: 'column'}}>
             <div>
-              <img src={inputValue} alt="Image to be analyzed" style={{width:600, height:500}} />
+              <img src={inputValue} alt="Input Analysis" style={{width:600, height:500}} />
             </div>
             <div>
               {
