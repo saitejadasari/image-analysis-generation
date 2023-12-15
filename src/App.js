@@ -88,7 +88,7 @@ function App() {
           <h3>Image Generation</h3>
           <div style={{flexDirection: 'column'}}>
             <div>
-              <img src={imgUrl} alt="Generated Image" style={{width:600, height:500}} />
+              <img src={imgUrl} alt="Generated data" style={{width:600, height:500}} />
             </div>
           </div>
         </div> : null
