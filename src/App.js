@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import analyze_image from './services/azure-image-analysis';
 import generate_image from './services/openai-image-generation';
+import './styles.css';
 
 function App() {
 
@@ -38,65 +39,54 @@ function App() {
   }
 
   return (
-  <div>
-    <div style={{alignItems: "normal"}}>
-      <h1 style={{font: 20}}>Computer Vision App</h1>
-    </div>
-    <div style={{}}>
-      <div style={{}}>
-        <text>Insert URL or Enter Prompt</text>
+    <div className="computer-vision-app">
+      <div className="header">
+        <h1>Computer Vision App</h1>
       </div>
-      <div>
-        <input 
-          placeholder='Insert an URL or Enter the prompt to generate an image'
-          style={{width: '400px'}}
-          value={inputValue}
-          onChange={e => setInputValue(e.target.value)}
+      <div className="content">
+        <div className="input-section">
+          <label htmlFor="imageInput">Insert URL or Enter Prompt</label>
+          <input
+            id="imageInput"
+            type="text"
+            placeholder="Insert URL or Enter the prompt to generate an image"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
           />
+          <div className="button-pos">
+            <button onClick={click_analyze} disabled={isLoading}>Analyze</button>
+            <button onClick={click_generate} disabled={isLoading}>Generate</button>
+          </div>
+          {isLoading && <span>Loading...</span>}
+        </div>
+
+        {/* Section for Image Analysis */}
+        {inputValue && imgData.captionResult && (
+          <div className="analysis-section">
+            <h3>Computer Vision Analysis</h3>
+            <div className="image-container">
+              <img className="image-style" src={inputValue} alt="Input Analysis" />
+            </div>
+            <div className="result">
+              {imgData.captionResult.text && (
+                <p>{imgData.captionResult.text} {imgData.captionResult.confidence}</p>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Section for Image Generation */}
+        {imgUrl && (
+          <div className="generation-section">
+            <h3>Image Generation</h3>
+            <div className="image-container">
+              <img src={imgUrl} alt="Generated data" />
+            </div>
+          </div>
+        )}
       </div>
-      <button onClick={click_analyze} disabled={isLoading}>Analyze</button>
-      <button onClick={click_generate} disabled={isLoading}>Generate</button>
-
-      {isLoading ? <text>Loading...</text> : null}
-
-      {/* Section for Image Analysis */}
-      {
-        imgData.captionResult ?
-        <div>
-          <h3>Computer Vision Analysis</h3>
-          <div style={{flexDirection: 'column'}}>
-            <div>
-              <img src={inputValue} alt="Input Analysis" style={{width:600, height:500}} />
-            </div>
-            <div>
-              {
-                imgData.captionResult ?
-                <text>{imgData.captionResult.text} {imgData.captionResult.confidence}</text> : null
-              }
-            </div>
-          </div>
-        </div> : imgData.error ?
-        <div>
-          <text>Error loading the image</text>
-        </div> : null
-      }
-
-      {/* Section for Image Generation */}
-      {
-        imgUrl ?
-        <div>
-          <h3>Image Generation</h3>
-          <div style={{flexDirection: 'column'}}>
-            <div>
-              <img src={imgUrl} alt="Generated data" style={{width:600, height:500}} />
-            </div>
-          </div>
-        </div> : null
-      }
-      
     </div>
-  </div>);
-
-}
+  );
+};
 
 export default App;
